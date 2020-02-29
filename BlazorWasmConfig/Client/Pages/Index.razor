@@ -1,0 +1,5 @@
+﻿@page "/"
+@inject BlazorWasmConfig.Shared.GalaxyInfo GalaxyInfo
+
+<h4>@nameof(GalaxyInfo) loaded as config from appsettings.json embedded resource</h4>
+@GalaxyInfo?.ToString()
