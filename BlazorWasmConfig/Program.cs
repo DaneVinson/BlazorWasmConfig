@@ -5,21 +5,16 @@ using System.Text;
 using Microsoft.AspNetCore.Blazor.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using System.IO;
-using BlazorWasmConfig.Shared;
 using System.Reflection;
-using System.Linq;
-using System.Net.Http;
-using Microsoft.AspNetCore.Components;
 
-namespace BlazorWasmConfig.Client
+namespace BlazorWasmConfig
 {
     public class Program
     {
         public static async Task Main(string[] args)
         {
             var configuration = new ConfigurationBuilder()
-                                        .AddJsonStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("BlazorWasmConfig.Client.appsettings.json"))
+                                        .AddJsonStream(Assembly.GetExecutingAssembly().GetManifestResourceStream("BlazorWasmConfig.appsettings.json"))
                                         .Build();
 
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -29,6 +24,7 @@ namespace BlazorWasmConfig.Client
             builder.RootComponents.Add<App>("app");
 
             await builder.Build().RunAsync();
+
         }
     }
 }
